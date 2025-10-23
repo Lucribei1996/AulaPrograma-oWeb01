@@ -1,0 +1,214 @@
+/* RESET BÁSICO - Garante consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
+}
+
+/* Estilo Base do Corpo (BODY) */
+body {
+    font-family: Arial, sans-serif; /* Fonte padrão, legível */
+    line-height: 1.6; /* Espaçamento de linha para facilitar a leitura */
+    background-color: #f4f4f4; /* Cor de fundo suave para o site */
+    color: #333; /* Cor de texto padrão (cinza escuro) */
+}
+
+/* Container principal para centralizar o conteúdo */
+main {
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 20px auto; /* Centraliza o conteúdo na tela, com margem em cima e embaixo */
+    padding: 20px;
+    background-color: #fff; /* Fundo branco para a área de conteúdo */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* HEADER: Estilização do cabeçalho */
+header {
+    background-color: #007bff; /* Cor principal (Azul, representa Confiança/ONG) */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+/* FOOTER: Estilização do rodapé */
+footer {
+    background-color: #333; /* Cor escura */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+/* HEADER: Estilização do cabeçalho */
+header {
+    background-color: #007bff; /* Cor principal (Azul, representa Confiança/ONG) */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+/* FOOTER: Estilização do rodapé */
+footer {
+    background-color: #333; /* Cor escura */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+/* Estilo para Títulos H2 e H3 (Geral) */
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Estilo para o Formulário e Agrupamento (cadastro.html) */
+fieldset {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+legend {
+    font-weight: bold;
+    color: #007bff;
+    padding: 0 10px;
+    font-size: 1.1em;
+}
+
+label {
+    display: block; /* Faz o label ocupar a linha inteira */
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%; /* Faz o input ocupar 100% da largura do container */
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Importante para manter o tamanho total */
+}
+
+button[type="submit"] {
+    background-color: #28a745; /* Cor de sucesso (Verde) */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838; /* Efeito hover */
+}
+
+/* --- 4.1. LAYOUT DA PÁGINA DE PROJETOS --- */
+
+/* Contêiner Pai: Galeria de Projetos */
+#galeria-projetos {
+    display: flex; /* Ativa o Flexbox no container */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
+    gap: 20px; /* Cria um espaçamento consistente entre os itens */
+    justify-content: space-around; /* Distribui o espaço extra entre os itens */
+    margin-top: 30px;
+}
+
+/* Itens Filhos: Cartões de Projeto */
+.projeto-card {
+    /* Define o tamanho base de cada cartão. Ex: 300px, mas pode encolher */
+    flex: 1 1 300px; 
+    
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.projeto-card img {
+    width: 100%; /* Garante que a imagem se ajuste ao tamanho do cartão */
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para a seção "Como Ajudar" */
+#doacao-voluntariado {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+#doacao-voluntariado article {
+    flex: 1;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* --- 4.2. MEDIA QUERIES (RESPONSIVIDADE) --- */
+
+/* Regras aplicadas quando a tela é pequena (ex: Celular) */
+/* O max-width: 768px significa: "Para telas de 768px de largura ou MENOS" */
+@media (max-width: 768px) {
+    
+    /* 1. Navegação Vertical em Telas Pequenas */
+    header {
+        padding: 10px 0;
+    }
+    
+    nav ul {
+        flex-direction: column; /* Transforma a navegação horizontal em uma lista vertical */
+    }
+
+    nav li {
+        margin: 5px 0; /* Ajusta a margem para vertical */
+    }
+
+    /* 2. Conteúdo de Ajuda em Coluna Única */
+    #doacao-voluntariado {
+        flex-direction: column; /* Transforma as duas colunas em uma coluna */
+        gap: 15px;
+    }
+
+    /* 3. Ajuste do Container Principal */
+    main {
+        margin: 0; /* Remove a margem lateral em telas pequenas */
+        padding: 10px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
