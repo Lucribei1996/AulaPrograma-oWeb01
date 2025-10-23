@@ -212,3 +212,9 @@ button[type="submit"]:hover {
         box-shadow: none;
     }
 }
+
+/* Garantir que todas as imagens sejam responsivas */
+img {
+    max-width: 100%; /* A largura máxima será 100% do elemento pai */
+    height: auto;    /* Mantém a proporção original da imagem (para não distorcer) */
+}
