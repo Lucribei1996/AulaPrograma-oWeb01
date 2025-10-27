@@ -1,3 +1,95 @@
+:root {
+    /* 1. PALETA DE CORES (Mínimo 8 cores) */
+    --cor-primaria-1: #007bff;     /* Azul de destaque */
+    --cor-primaria-2: #0056b3;     /* Azul escuro (usado no hover) */
+    --cor-secundaria-1: #28a745;   /* Verde (para ações de sucesso) */
+    --cor-secundaria-2: #ffc107;   /* Amarelo (para alertas) */
+    --cor-neutra-clara: #f8f9fa;   /* Fundo da página/Cards */
+    --cor-neutra-escura: #343a40;  /* Texto principal/Cabeçalho */
+    --cor-sucesso: #28a745;        /* Cor para botões OK/Sucesso */
+    --cor-alerta: #dc3545;         /* Cor para erros/Alerta */
+
+    /* 2. TIPOGRAFIA (Mínimo 5 tamanhos) */
+    --fonte-tamanho-xxl: 3rem;     /* 48px - Títulos principais (h1) */
+    --fonte-tamanho-xl: 2.5rem;    /* 40px - Títulos de seção (h2) */
+    --fonte-tamanho-lg: 1.5rem;    /* 24px - Subtítulos (h3) */
+    --fonte-tamanho-md: 1rem;      /* 16px - Texto padrão/P */
+    --fonte-tamanho-sm: 0.875rem;  /* 14px - Texto de apoio/Captions */
+
+    /* 3. ESPAÇAMENTO MODULAR (Sistema de 8px) */
+    --espaco-xs: 8px;              /* Extra Pequeno */
+    --espaco-sm: 16px;             /* Pequeno */
+    --espaco-md: 24px;             /* Médio */
+    --espaco-lg: 32px;             /* Grande */
+    --espaco-xl: 48px;             /* Extra Grande */
+    --espaco-xxl: 64px;            /* Muito Grande */
+}
+
+/* TÓPICO 3: NAVEGAÇÃO COM FLEXBOX */
+
+/* Estiliza o UL (a lista de links) */
+nav ul {
+    list-style: none; /* Remove os marcadores (bolinhas) */
+    display: flex; /* Transforma a lista em uma fila horizontal */
+    justify-content: center; /* Centraliza os links no cabeçalho */
+    padding: 0;
+    margin: 0;
+}
+
+/* Estiliza os LI (cada item da lista) */
+nav ul li {
+    margin: 0 var(--espaco-sm); /* Adiciona o espaçamento horizontal (16px) entre os itens */
+}
+
+/* Estiliza os A (os próprios links) */
+nav ul li a {
+    text-decoration: none; /* Remove o sublinhado */
+    color: var(--cor-neutra-clara); /* Usa a variável para cor branca */
+    font-size: var(--fonte-tamanho-md);
+    padding: var(--espaco-xs) 0;
+    display: block; /* Para garantir que o padding funcione bem */
+}
+
+/* Criando o estado visual (hover) */
+nav ul li a:hover {
+    color: var(--cor-secundaria-2); /* Cor amarela de alerta ao passar o mouse */
+}
+
+/* TÓPICO 4: SISTEMA DE GRID DE 12 COLUNAS */
+
+/* 1. O Contêiner Flexível para o Conteúdo */
+/* Vamos usar uma classe genérica para aplicar o Grid em diversas seções */
+.grid-12 {
+    display: grid;
+    /* Divide o espaço disponível em 12 colunas de tamanho igual (1fr) */
+    grid-template-columns: repeat(12, 1fr);
+    /* Adiciona um espaço (gutter) de 24px entre as colunas, usando a variável */
+    gap: var(--espaco-md); 
+}
+
+/* 2. CLASSES DE LAYOUT PARA OCUPAR COLUNAS */
+/* Metáfora: Dizemos ao conteúdo quantas colunas ele deve ocupar (de 12) */
+
+/* Classe para ocupar 12 colunas (largura total) - Padrão Mobile/Telas Pequenas */
+.col-12 {
+    grid-column: span 12;
+}
+
+/* Classe para ocupar 6 colunas (metade da largura) */
+.col-6 {
+    grid-column: span 6;
+}
+
+/* Classe para ocupar 4 colunas (um terço da largura) */
+.col-4 {
+    grid-column: span 4;
+}
+
+/* Classe para ocupar 3 colunas (um quarto da largura) */
+.col-3 {
+    grid-column: span 3;
+}
+
 /* RESET BÁSICO - Garante consistência entre navegadores */
 * {
     margin: 0;
@@ -21,6 +113,44 @@ main {
     background-color: #fff; /* Fundo branco para a área de conteúdo */
     border-radius: 8px; /* Cantos arredondados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+/* TÓPICO 2: LAYOUT PRINCIPAL COM CSS GRID */
+#container-principal {
+    min-height: 100vh; /* Garante que o container ocupe 100% da altura da tela */
+    display: grid;
+    /* Define as áreas do layout (header, main e footer) */
+    grid-template-areas:
+        "cabecalho"
+        "conteudo"
+        "rodape";
+    /* Define a altura das linhas:
+        - cabecalho: altura automática (auto)
+        - conteudo: ocupa todo o espaço restante (1fr)
+        - rodape: altura automática (auto)
+    */
+    grid-template-rows: auto 1fr auto; 
+}
+
+/* Mapeamento dos elementos para as áreas que definimos acima */
+header {
+    grid-area: cabecalho;
+    /* Usando as variáveis do Tópico 1 para estilização inicial */
+    background-color: var(--cor-primaria-1);
+    padding: var(--espaco-md); 
+}
+
+main {
+    grid-area: conteudo;
+    /* Usando as variáveis do Tópico 1 para espaçamento */
+    padding: var(--espaco-lg); 
+}
+
+footer {
+    grid-area: rodape;
+    /* Usando as variáveis do Tópico 1 para estilização inicial */
+    background-color: var(--cor-neutra-escura);
+    color: var(--cor-neutra-clara);
+    padding: var(--espaco-md);
 }
 
 /* HEADER: Estilização do cabeçalho */
@@ -190,14 +320,7 @@ button[type="submit"]:hover {
         padding: 10px 0;
     }
     
-    nav ul {
-        flex-direction: column; /* Transforma a navegação horizontal em uma lista vertical */
-    }
-
-    nav li {
-        margin: 5px 0; /* Ajusta a margem para vertical */
-    }
-
+    
     /* 2. Conteúdo de Ajuda em Coluna Única */
     #doacao-voluntariado {
         flex-direction: column; /* Transforma as duas colunas em uma coluna */
@@ -217,4 +340,169 @@ button[type="submit"]:hover {
 img {
     max-width: 100%; /* A largura máxima será 100% do elemento pai */
     height: auto;    /* Mantém a proporção original da imagem (para não distorcer) */
+}
+
+/* TÓPICO 5: RESPONSIVIDADE (BREAKPOINT 1 - TABLET) */
+
+/* A regra SÓ será lida se a tela tiver no mínimo 768px de largura (Tablet). */
+@media screen and (min-width: 768px) {
+    
+    /* 1. Resetar o Container Principal (Ajuste para Grid) */
+    #container-principal {
+        /* Metáfora: Em telas maiores, damos mais espaço para o conteúdo principal */
+        grid-template-areas:
+            "cabecalho cabecalho cabecalho"
+            "conteudo conteudo conteudo"
+            "rodape rodape rodape";
+    }
+    
+    /* 2. CLASSES DE LAYOUT RESPONSIVO (Tablet - col-md) */
+    /* Estas classes SÓ funcionam a partir de 768px e sobrescrevem o col-12 */
+    
+    /* Para tablets, o item ocupa 6 colunas (metade) */
+    .col-md-6 {
+        grid-column: span 6;
+    }
+
+    /* Para tablets, o item ocupa 12 colunas (largura total) */
+    .col-md-12 {
+        grid-column: span 12;
+    }
+    
+    /* Para tablets, o item ocupa 4 colunas (um terço) */
+    .col-md-4 {
+        grid-column: span 4;
+    }
+}
+
+/* TÓPICO 6: MENU HAMBÚRGUER (ESTILOS PADRÃO MOBILE) */
+
+/* 1. Estiliza o Header para posicionar os itens com Flexbox */
+header {
+    display: flex; /* Transforma o header em Flexbox */
+    justify-content: space-between; /* Empurra o H1 para a esquerda e o botão para a direita */
+    align-items: center; 
+    flex-wrap: wrap; 
+    padding: var(--espaco-md);
+    position: relative; 
+    height: auto; 
+}
+
+/* 2. O menu toggle (botão hambúrguer) - Visível por padrão no Mobile */
+.menu-toggle {
+    display: block; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--espaco-sm);
+    z-index: 100; 
+}
+
+/* 3. Estilização do ícone (as "linhas" do hambúrguer) */
+.hamburguer-icon,
+.hamburguer-icon::before,
+.hamburguer-icon::after {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--cor-neutra-clara); /* Cor branca */
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburguer-icon::before, /* ESTE É O CÓDIGO CHAVE FALTANTE/INCOMPLETO */
+.hamburguer-icon::after {
+    content: ""; /* Necessário para usar ::before e ::after */
+    position: absolute;
+    left: 0;
+}
+
+.hamburguer-icon::before {
+    top: -8px; /* Linha de cima */
+}
+
+.hamburguer-icon::after {
+    top: 8px; /* Linha de baixo */
+}
+
+/* 4. Esconder o menu de navegação por padrão (mobile) */
+nav {
+    display: none; /* <--- ISSO VAI ESCONDER O MENU NO MOBILE */
+    width: 100%;
+    text-align: center;
+    background-color: var(--cor-primaria-2); 
+}
+
+/* 5. Regras para Telas Maiores (Desktop/Tablet) */
+@media screen and (min-width: 768px) {
+    /* ... seu código do Tópico 5 (Grid) fica aqui ... */
+
+    .menu-toggle {
+        display: none; /* Esconde o botão hambúrguer no desktop */
+    }
+    nav {
+        display: block !important; /* Menu deve estar sempre visível no desktop */
+        width: auto;
+        background-color: transparent; 
+    }
+}
+
+/* TÓPICO 7: ESTILIZAÇÃO DOS CARDS DE PROJETOS (Flexbox) */
+
+/* Contêiner Pai dos Cards: Ativa o Flexbox e a quebra de linha */
+#galeria-cards {
+    display: flex; 
+    flex-wrap: wrap; 
+    /* Metáfora: Dizemos à fila de cards para tentar usar todo o espaço, 
+    mas se não couber, quebre para baixo (wrap). */
+    gap: var(--espaco-md); /* Espaçamento de 24px entre os cards */
+    justify-content: space-around; /* Distribui os cards horizontalmente */
+    margin-top: var(--espaco-lg); 
+}
+
+/* Os Cards Individuais: Define a largura mínima e máxima */
+.projeto-card {
+    /* flex-grow: 1 -> O card cresce se houver espaço
+    flex-shrink: 1 -> O card encolhe se precisar
+    flex-basis: 300px -> Largura mínima de 300px. Se a tela tiver espaço para 3x300px, eles ficam em 3 colunas. */
+    flex: 1 1 300px; 
+    
+    background-color: var(--cor-neutra-clara);
+    padding: var(--espaco-md);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.projeto-card img {
+    width: 100%;
+    height: 200px;
+    /* Adicione esta linha: Garante que a imagem preencha o espaço sem distorcer */
+    object-fit: cover; 
+    border-radius: 4px;
+    margin-bottom: var(--espaco-sm);
+}
+
+.projeto-card h3 {
+    color: var(--cor-primaria-1);
+    margin-bottom: var(--espaco-sm);
+}
+
+/* Estilo para o botão */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: var(--espaco-sm);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primario {
+    background-color: var(--cor-secundaria-1); /* Cor de destaque (Verde) */
+    color: var(--cor-neutra-clara);
+}
+
+.btn-primario:hover {
+    background-color: #218838;
 }
