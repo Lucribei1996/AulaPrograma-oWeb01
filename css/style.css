@@ -1,253 +1,161 @@
 :root {
-    /* 1. PALETA DE CORES (Mínimo 8 cores) */
-    --cor-primaria-1: #007bff;     /* Azul de destaque */
-    --cor-primaria-2: #0056b3;     /* Azul escuro (usado no hover) */
-    --cor-secundaria-1: #28a745;   /* Verde (para ações de sucesso) */
-    --cor-secundaria-2: #ffc107;   /* Amarelo (para alertas) */
-    --cor-neutra-clara: #f8f9fa;   /* Fundo da página/Cards */
-    --cor-neutra-escura: #343a40;  /* Texto principal/Cabeçalho */
-    --cor-sucesso: #28a745;        /* Cor para botões OK/Sucesso */
-    --cor-alerta: #dc3545;         /* Cor para erros/Alerta */
+    /* 1. PALETA DE CORES */
+    --cor-primaria-1: #007bff;      /* Azul de destaque */
+    --cor-primaria-2: #0056b3;      /* Azul escuro (usado no hover) */
+    --cor-secundaria-1: #28a745;    /* Verde (para ações de sucesso/ativo) */
+    --cor-secundaria-2: #ffc107;    /* Amarelo (para alertas/em-andamento) */
+    --cor-neutra-clara: #f8f9fa;    /* Fundo da página/Cards */
+    --cor-neutra-escura: #343a40;   /* Texto principal/Cabeçalho */
+    --cor-sucesso: #28a745;         
+    --cor-alerta: #dc3545;          
 
-    /* 2. TIPOGRAFIA (Mínimo 5 tamanhos) */
-    --fonte-tamanho-xxl: 3rem;     /* 48px - Títulos principais (h1) */
-    --fonte-tamanho-xl: 2.5rem;    /* 40px - Títulos de seção (h2) */
-    --fonte-tamanho-lg: 1.5rem;    /* 24px - Subtítulos (h3) */
-    --fonte-tamanho-md: 1rem;      /* 16px - Texto padrão/P */
-    --fonte-tamanho-sm: 0.875rem;  /* 14px - Texto de apoio/Captions */
+    /* 2. TIPOGRAFIA */
+    --fonte-tamanho-xxl: 3rem;      
+    --fonte-tamanho-xl: 2.5rem;     
+    --fonte-tamanho-lg: 1.5rem;     
+    --fonte-tamanho-md: 1rem;       
+    --fonte-tamanho-sm: 0.875rem;   
 
-    /* 3. ESPAÇAMENTO MODULAR (Sistema de 8px) */
-    --espaco-xs: 8px;              /* Extra Pequeno */
-    --espaco-sm: 16px;             /* Pequeno */
-    --espaco-md: 24px;             /* Médio */
-    --espaco-lg: 32px;             /* Grande */
-    --espaco-xl: 48px;             /* Extra Grande */
-    --espaco-xxl: 64px;            /* Muito Grande */
+    /* 3. ESPAÇAMENTO MODULAR */
+    --espaco-xs: 8px;              
+    --espaco-sm: 16px;              
+    --espaco-md: 24px;              
+    --espaco-lg: 32px;             
+    --espaco-xl: 48px;              
+    --espaco-xxl: 64px;            
 }
 
 /* TÓPICO 3: NAVEGAÇÃO COM FLEXBOX */
-
-/* Estiliza o UL (a lista de links) */
 nav ul {
-    list-style: none; /* Remove os marcadores (bolinhas) */
-    display: flex; /* Transforma a lista em uma fila horizontal */
-    justify-content: center; /* Centraliza os links no cabeçalho */
+    list-style: none; 
+    display: flex; 
+    justify-content: center; 
     padding: 0;
     margin: 0;
 }
-
-/* Estiliza os LI (cada item da lista) */
 nav ul li {
-    margin: 0 var(--espaco-sm); /* Adiciona o espaçamento horizontal (16px) entre os itens */
+    margin: 0 var(--espaco-sm); 
 }
-
-/* Estiliza os A (os próprios links) */
 nav ul li a {
-    text-decoration: none; /* Remove o sublinhado */
-    color: var(--cor-neutra-clara); /* Usa a variável para cor branca */
+    text-decoration: none; 
+    color: var(--cor-neutra-clara); 
     font-size: var(--fonte-tamanho-md);
     padding: var(--espaco-xs) 0;
-    display: block; /* Para garantir que o padding funcione bem */
+    display: block; 
 }
-
-/* Criando o estado visual (hover) */
 nav ul li a:hover {
-    color: var(--cor-secundaria-2); /* Cor amarela de alerta ao passar o mouse */
+    color: var(--cor-secundaria-2); 
 }
 
 /* TÓPICO 4: SISTEMA DE GRID DE 12 COLUNAS */
-
-/* 1. O Contêiner Flexível para o Conteúdo */
-/* Vamos usar uma classe genérica para aplicar o Grid em diversas seções */
 .grid-12 {
     display: grid;
-    /* Divide o espaço disponível em 12 colunas de tamanho igual (1fr) */
     grid-template-columns: repeat(12, 1fr);
-    /* Adiciona um espaço (gutter) de 24px entre as colunas, usando a variável */
     gap: var(--espaco-md); 
 }
+.col-12 { grid-column: span 12; }
+.col-6 { grid-column: span 6; }
+.col-4 { grid-column: span 4; }
+.col-3 { grid-column: span 3; }
 
-/* 2. CLASSES DE LAYOUT PARA OCUPAR COLUNAS */
-/* Metáfora: Dizemos ao conteúdo quantas colunas ele deve ocupar (de 12) */
-
-/* Classe para ocupar 12 colunas (largura total) - Padrão Mobile/Telas Pequenas */
-.col-12 {
-    grid-column: span 12;
-}
-
-/* Classe para ocupar 6 colunas (metade da largura) */
-.col-6 {
-    grid-column: span 6;
-}
-
-/* Classe para ocupar 4 colunas (um terço da largura) */
-.col-4 {
-    grid-column: span 4;
-}
-
-/* Classe para ocupar 3 colunas (um quarto da largura) */
-.col-3 {
-    grid-column: span 3;
-}
-
-/* RESET BÁSICO - Garante consistência entre navegadores */
+/* RESET BÁSICO */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
+    box-sizing: border-box; 
 }
 
-/* Estilo Base do Corpo (BODY) */
-body {
-    font-family: Arial, sans-serif; /* Fonte padrão, legível */
-    line-height: 1.6; /* Espaçamento de linha para facilitar a leitura */
-    background-color: #f4f4f4; /* Cor de fundo suave para o site */
-    color: #333; /* Cor de texto padrão (cinza escuro) */
-}
-
-/* Container principal para centralizar o conteúdo */
-main {
-    max-width: 1200px; /* Largura máxima do conteúdo */
-    margin: 20px auto; /* Centraliza o conteúdo na tela, com margem em cima e embaixo */
-    padding: 20px;
-    background-color: #fff; /* Fundo branco para a área de conteúdo */
-    border-radius: 8px; /* Cantos arredondados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
 /* TÓPICO 2: LAYOUT PRINCIPAL COM CSS GRID */
-#container-principal {
-    min-height: 100vh; /* Garante que o container ocupe 100% da altura da tela */
+body {
+    font-family: Arial, sans-serif; 
+    line-height: 1.6; 
+    background-color: #f4f4f4; 
+    color: #333; 
+    min-height: 100vh;
     display: grid;
-    /* Define as áreas do layout (header, main e footer) */
     grid-template-areas:
         "cabecalho"
         "conteudo"
         "rodape";
-    /* Define a altura das linhas:
-        - cabecalho: altura automática (auto)
-        - conteudo: ocupa todo o espaço restante (1fr)
-        - rodape: altura automática (auto)
-    */
     grid-template-rows: auto 1fr auto; 
 }
 
-/* Mapeamento dos elementos para as áreas que definimos acima */
+/* Mapeamento das Áreas do Grid */
 header {
     grid-area: cabecalho;
-    /* Usando as variáveis do Tópico 1 para estilização inicial */
     background-color: var(--cor-primaria-1);
     padding: var(--espaco-md); 
+    color: white; 
+    text-align: center; 
 }
-
 main {
     grid-area: conteudo;
-    /* Usando as variáveis do Tópico 1 para espaçamento */
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 20px auto; /* Centraliza o conteúdo na tela, com margem em cima e embaixo */
     padding: var(--espaco-lg); 
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
-
 footer {
     grid-area: rodape;
-    /* Usando as variáveis do Tópico 1 para estilização inicial */
     background-color: var(--cor-neutra-escura);
     color: var(--cor-neutra-clara);
     padding: var(--espaco-md);
+    text-align: center; 
+    margin-top: 30px; 
 }
 
-/* HEADER: Estilização do cabeçalho */
-header {
-    background-color: #007bff; /* Cor principal (Azul, representa Confiança/ONG) */
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-}
-
+/* Estilização de Elementos */
 header h1 {
     font-size: 2em;
     margin-bottom: 10px;
 }
-
-/* FOOTER: Estilização do rodapé */
-footer {
-    background-color: #333; /* Cor escura */
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 30px;
-}
-
-/* HEADER: Estilização do cabeçalho */
-header {
-    background-color: #007bff; /* Cor principal (Azul, representa Confiança/ONG) */
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-/* FOOTER: Estilização do rodapé */
-footer {
-    background-color: #333; /* Cor escura */
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 30px;
-}
-
-/* Estilo para Títulos H2 e H3 (Geral) */
 h2 {
-    color: #007bff;
+    color: var(--cor-primaria-1); 
     border-bottom: 2px solid #ddd;
     padding-bottom: 5px;
     margin-top: 25px;
     margin-bottom: 15px;
 }
-
 h3 {
     color: #555;
     margin-top: 20px;
 }
 
-/* Estilo para o Formulário e Agrupamento (cadastro.html) */
+/* --- ESTILOS DE FORMULÁRIO (cadastro.html) --- */
 fieldset {
     border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
 }
-
 legend {
     font-weight: bold;
-    color: #007bff;
+    color: var(--cor-primaria-1); 
     padding: 0 10px;
     font-size: 1.1em;
 }
-
 label {
-    display: block; /* Faz o label ocupar a linha inteira */
+    display: block; 
     margin-top: 10px;
     font-weight: 500;
 }
-
 input[type="text"], 
 input[type="email"], 
 input[type="tel"],
 input[type="date"],
 select {
-    width: 100%; /* Faz o input ocupar 100% da largura do container */
+    width: 100%; 
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Importante para manter o tamanho total */
+    box-sizing: border-box; 
 }
-
 button[type="submit"] {
-    background-color: #28a745; /* Cor de sucesso (Verde) */
+    background-color: var(--cor-secundaria-1); 
     color: white;
     padding: 10px 20px;
     border: none;
@@ -256,253 +164,141 @@ button[type="submit"] {
     font-size: 1.1em;
     margin-top: 20px;
 }
-
 button[type="submit"]:hover {
-    background-color: #218838; /* Efeito hover */
+    background-color: #218838;
 }
 
-/* --- 4.1. LAYOUT DA PÁGINA DE PROJETOS --- */
+/* ------------------------------------------------------------------------------------------------------ */
+/* --- SEÇÃO: ESTILIZAÇÃO DOS CARDS DE PROJETOS COM GRID E IMAGEM (projetos.html) --- */
+/* ------------------------------------------------------------------------------------------------------ */
 
-/* Contêiner Pai: Galeria de Projetos */
-#galeria-projetos {
-    display: flex; /* Ativa o Flexbox no container */
-    flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
-    gap: 20px; /* Cria um espaçamento consistente entre os itens */
-    justify-content: space-around; /* Distribui o espaço extra entre os itens */
-    margin-top: 30px;
+/* 1. Contêiner Pai dos Cards: ATIVA O GRID. */
+#lista-projetos.grid-container {
+    display: grid;
+    /* Cria colunas responsivas, 300px é a largura mínima de cada card */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px; 
+    padding: 20px 0; 
+    margin-top: var(--espaco-lg); 
 }
 
-/* Itens Filhos: Cartões de Projeto */
 .projeto-card {
-    /* Define o tamanho base de cada cartão. Ex: 300px, mas pode encolher */
-    flex: 1 1 300px; 
-    
-    background-color: #f9f9f9;
-    padding: 15px;
+    background-color: #fff; 
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    padding-bottom: var(--espaco-sm); 
 }
 
-.projeto-card img {
-    width: 100%; /* Garante que a imagem se ajuste ao tamanho do cartão */
-    height: auto;
-    border-radius: 4px;
+/* 3. Estilo para a imagem dentro do card (RESOLVE O PROBLEMA DE IMAGEM GIGANTE) */
+section#lista-projetos.grid-container .projeto-card img {
+    width: 100%; 
+    display: block; 
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
     margin-bottom: 10px;
+    height: 200px !important; /* FORÇA A ALTURA FIXA */
+    max-width: 100% !important; 
 }
 
-/* Estilo para a seção "Como Ajudar" */
+.projeto-card h3,
+.projeto-card p {
+    padding: 0 15px;
+    text-align: left; 
+}
+.projeto-card h3 {
+    margin-top: 10px;
+}
+.projeto-card .status {
+    display: inline-block;
+    padding: 4px 8px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: var(--fonte-tamanho-sm);
+    font-weight: bold;
+    color: var(--cor-neutra-clara);
+}
+.projeto-card .status.ativo { background-color: var(--cor-secundaria-1); }
+.projeto-card .status.concluido { background-color: var(--cor-neutra-escura); }
+.projeto-card .status.em-andamento { background-color: var(--cor-secundaria-2); color: var(--cor-neutra-escura); }
+
+/* --- SEÇÃO "Como Ajudar" (Flexbox) --- */
 #doacao-voluntariado {
     display: flex;
-    justify-content: space-around;
-    gap: 30px;
+    justify-content: center; 
+    gap: 30px; 
     margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid #ddd;
 }
-
 #doacao-voluntariado article {
-    flex: 1;
+    flex: 1; 
+    max-width: 350px; 
     padding: 20px;
-    border: 1px dashed #ccc;
-    border-radius: 5px;
-    text-align: center;
-}
-
-/* --- 4.2. MEDIA QUERIES (RESPONSIVIDADE) --- */
-
-/* Regras aplicadas quando a tela é pequena (ex: Celular) */
-/* O max-width: 768px significa: "Para telas de 768px de largura ou MENOS" */
-@media (max-width: 768px) {
-    
-    /* 1. Navegação Vertical em Telas Pequenas */
-    header {
-        padding: 10px 0;
-    }
-    
-    
-    /* 2. Conteúdo de Ajuda em Coluna Única */
-    #doacao-voluntariado {
-        flex-direction: column; /* Transforma as duas colunas em uma coluna */
-        gap: 15px;
-    }
-
-    /* 3. Ajuste do Container Principal */
-    main {
-        margin: 0; /* Remove a margem lateral em telas pequenas */
-        padding: 10px;
-        border-radius: 0;
-        box-shadow: none;
-    }
-}
-
-/* Garantir que todas as imagens sejam responsivas */
-img {
-    max-width: 100%; /* A largura máxima será 100% do elemento pai */
-    height: auto;    /* Mantém a proporção original da imagem (para não distorcer) */
-}
-
-/* TÓPICO 5: RESPONSIVIDADE (BREAKPOINT 1 - TABLET) */
-
-/* A regra SÓ será lida se a tela tiver no mínimo 768px de largura (Tablet). */
-@media screen and (min-width: 768px) {
-    
-    /* 1. Resetar o Container Principal (Ajuste para Grid) */
-    #container-principal {
-        /* Metáfora: Em telas maiores, damos mais espaço para o conteúdo principal */
-        grid-template-areas:
-            "cabecalho cabecalho cabecalho"
-            "conteudo conteudo conteudo"
-            "rodape rodape rodape";
-    }
-    
-    /* 2. CLASSES DE LAYOUT RESPONSIVO (Tablet - col-md) */
-    /* Estas classes SÓ funcionam a partir de 768px e sobrescrevem o col-12 */
-    
-    /* Para tablets, o item ocupa 6 colunas (metade) */
-    .col-md-6 {
-        grid-column: span 6;
-    }
-
-    /* Para tablets, o item ocupa 12 colunas (largura total) */
-    .col-md-12 {
-        grid-column: span 12;
-    }
-    
-    /* Para tablets, o item ocupa 4 colunas (um terço) */
-    .col-md-4 {
-        grid-column: span 4;
-    }
-}
-
-/* TÓPICO 6: MENU HAMBÚRGUER (ESTILOS PADRÃO MOBILE) */
-
-/* 1. Estiliza o Header para posicionar os itens com Flexbox */
-header {
-    display: flex; /* Transforma o header em Flexbox */
-    justify-content: space-between; /* Empurra o H1 para a esquerda e o botão para a direita */
-    align-items: center; 
-    flex-wrap: wrap; 
-    padding: var(--espaco-md);
-    position: relative; 
-    height: auto; 
-}
-
-/* 2. O menu toggle (botão hambúrguer) - Visível por padrão no Mobile */
-.menu-toggle {
-    display: block; 
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: var(--espaco-sm);
-    z-index: 100; 
-}
-
-/* 3. Estilização do ícone (as "linhas" do hambúrguer) */
-.hamburguer-icon,
-.hamburguer-icon::before,
-.hamburguer-icon::after {
-    display: block;
-    width: 30px;
-    height: 3px;
-    background-color: var(--cor-neutra-clara); /* Cor branca */
-    transition: all 0.3s ease-in-out;
-}
-
-.hamburguer-icon::before, /* ESTE É O CÓDIGO CHAVE FALTANTE/INCOMPLETO */
-.hamburguer-icon::after {
-    content: ""; /* Necessário para usar ::before e ::after */
-    position: absolute;
-    left: 0;
-}
-
-.hamburguer-icon::before {
-    top: -8px; /* Linha de cima */
-}
-
-.hamburguer-icon::after {
-    top: 8px; /* Linha de baixo */
-}
-
-/* 4. Esconder o menu de navegação por padrão (mobile) */
-nav {
-    display: none; /* <--- ISSO VAI ESCONDER O MENU NO MOBILE */
-    width: 100%;
-    text-align: center;
-    background-color: var(--cor-primaria-2); 
-}
-
-/* 5. Regras para Telas Maiores (Desktop/Tablet) */
-@media screen and (min-width: 768px) {
-    /* ... seu código do Tópico 5 (Grid) fica aqui ... */
-
-    .menu-toggle {
-        display: none; /* Esconde o botão hambúrguer no desktop */
-    }
-    nav {
-        display: block !important; /* Menu deve estar sempre visível no desktop */
-        width: auto;
-        background-color: transparent; 
-    }
-}
-
-/* TÓPICO 7: ESTILIZAÇÃO DOS CARDS DE PROJETOS (Flexbox) */
-
-/* Contêiner Pai dos Cards: Ativa o Flexbox e a quebra de linha */
-#galeria-cards {
-    display: flex; 
-    flex-wrap: wrap; 
-    /* Metáfora: Dizemos à fila de cards para tentar usar todo o espaço, 
-    mas se não couber, quebre para baixo (wrap). */
-    gap: var(--espaco-md); /* Espaçamento de 24px entre os cards */
-    justify-content: space-around; /* Distribui os cards horizontalmente */
-    margin-top: var(--espaco-lg); 
-}
-
-/* Os Cards Individuais: Define a largura mínima e máxima */
-.projeto-card {
-    /* flex-grow: 1 -> O card cresce se houver espaço
-    flex-shrink: 1 -> O card encolhe se precisar
-    flex-basis: 300px -> Largura mínima de 300px. Se a tela tiver espaço para 3x300px, eles ficam em 3 colunas. */
-    flex: 1 1 300px; 
-    
-    background-color: var(--cor-neutra-clara);
-    padding: var(--espaco-md);
+    border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.projeto-card img {
-    width: 100%;
-    height: 200px;
-    /* Adicione esta linha: Garante que a imagem preencha o espaço sem distorcer */
-    object-fit: cover; 
-    border-radius: 4px;
-    margin-bottom: var(--espaco-sm);
-}
-
-.projeto-card h3 {
-    color: var(--cor-primaria-1);
-    margin-bottom: var(--espaco-sm);
-}
-
-/* Estilo para o botão */
-.btn {
-    display: inline-block;
+/* Estilo dos Botões */
+#doacao-voluntariado a.btn-doar,
+#doacao-voluntariado a.btn-voluntario {
+    display: inline-block; 
     padding: 10px 20px;
-    margin-top: var(--espaco-sm);
+    margin-top: 15px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
-
-.btn-primario {
-    background-color: var(--cor-secundaria-1); /* Cor de destaque (Verde) */
+#doacao-voluntariado a.btn-doar {
+    background-color: var(--cor-primaria-1);
     color: var(--cor-neutra-clara);
+    border: 1px solid var(--cor-primaria-1);
+}
+#doacao-voluntariado a.btn-doar:hover {
+    background-color: var(--cor-primaria-2);
+}
+#doacao-voluntariado a.btn-voluntario {
+    background-color: var(--cor-secundaria-1);
+    color: var(--cor-neutra-clara);
+    border: 1px solid var(--cor-secundaria-1);
+}
+#doacao-voluntariado a.btn-voluntario:hover {
+    background-color: #218838;
 }
 
-.btn-primario:hover {
-    background-color: #218838;
+/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
+@media (max-width: 900px) {
+    /* Ajusta o espaçamento geral em telas médias */
+    main {
+        padding: 15px;
+    }
+    
+    /* Na seção Como Ajudar, os blocos empilham (Flexbox) */
+    #doacao-voluntariado {
+        flex-direction: column;
+        gap: 15px;
+    }
+    #doacao-voluntariado article {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Ajusta os tamanhos de fonte em telas pequenas */
+    :root {
+        --fonte-tamanho-xxl: 2rem;
+        --fonte-tamanho-xl: 1.8rem;
+    }
+
+    /* Navegação empilha (Flexbox) */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
 }
