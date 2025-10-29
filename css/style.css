@@ -302,3 +302,28 @@ section#lista-projetos.grid-container .projeto-card img {
         margin: 5px 0;
     }
 }
+
+/* --- ESTILO PARA MODO ESCURO (ACESSIBILIDADE) --- */
+
+/* 1. Definição das cores para o modo escuro, sobrescrevendo as variáveis padrão */
+.dark-mode {
+    --cor-fundo: #121212;         /* Fundo da página: Cinza muito escuro */
+    --cor-fundo-main: #1e1e1e;    /* Fundo de caixas/cards: Cinza escuro */
+    --cor-texto: #e0e0e0;         /* Texto principal: Quase branco para alto contraste */
+    --cor-primaria-1: #4ba6ff;    /* Azul: Usar um tom mais claro para destacar no fundo escuro */
+    --cor-link-hover: #ffffff;    /* Link ao passar o mouse: Branco puro */
+}
+
+/* 2. Regra de Alto Contraste (Opcional, mas recomendado para WCAG AA) */
+/* Isso inverte cores para criar um alto contraste artificial se o navegador ou SO pedir, 
+   mas é melhor confiar nas variáveis. */
+
+/* Ajuste o texto no modo escuro */
+.dark-mode {
+    color: var(--cor-texto);
+}
+
+/* Garante que links e botões tenham boa visibilidade no modo escuro */
+.dark-mode a {
+    color: var(--cor-primaria-1);
+}
