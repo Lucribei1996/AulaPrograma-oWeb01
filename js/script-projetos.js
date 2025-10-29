@@ -1,7 +1,3 @@
-// TÓPICO 13: Templates JavaScript e Manipulação do DOM
-// Metáfora: Esta função pega um objeto (os dados do projeto) e "carimba"
-// um bloco HTML completo, injetando os valores (${...}) nos lugares certos.
-
 document.addEventListener('DOMContentLoaded', function() {
     
     // 1. Dados: Uma lista de objetos para simular dados de um servidor

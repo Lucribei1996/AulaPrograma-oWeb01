@@ -1,5 +1,3 @@
-// TÓPICO 9: ESTRUTURA PARA VALIDAÇÃO DE FORMULÁRIOS
-// Metáfora: O JavaScript é o porteiro do formulário. Ele intercepta a submissão para validar os dados.
 console.log("O SCRIPT ESTÁ SENDO LIDO!"); 
 
 document.addEventListener('DOMContentLoaded', function() {
